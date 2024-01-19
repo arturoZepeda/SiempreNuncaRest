@@ -19,10 +19,17 @@ router.post('/post', async (req, res) => {
         res.status(400).json({message: error.message})
     }
 })
-
+let data = new Model({
+    palabra: 'Siempre',
+    fecha: new Date(),
+    descripcion: 'Siempre'
+})
 //Get all Method
-router.get('/getAll', (req, res) => {
-    res.send('Get All API')
+router.get('/getAll',  (req, res) => {
+    const respuesta = Model.find({});
+    respuesta.then((data) => {
+        res.status(200).json(data)
+    })
 })
 
 //Get by ID Method
