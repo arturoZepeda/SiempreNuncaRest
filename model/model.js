@@ -5,13 +5,13 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: String
     },
-    fecha:{
-	required: true,
-	type: Date	
-    },
-    descripcion:{
+    fecha: {
         required: true,
-	type: String
+        type: Date
+    },
+    descripcion: {
+        required: true,
+        type: String
     }
 })
 

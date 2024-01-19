@@ -1,10 +1,23 @@
 const express = require('express');
 const router = express.Router()
+const Model = require('../model/model');
+
 module.exports = router;
 
 //Post Method
-router.post('/post', (req, res) => {
-    res.send('Post API')
+router.post('/post', async (req, res) => {
+    const SiempreNunca  = new Model({
+        palabra: req.body.palabra,
+        fecha: req.body.fecha,
+        descripcion: req.body.descripcion
+    })
+    try {
+        const dataToSave = await SiempreNunca.save();
+        res.status(200).json(dataToSave)
+    }
+    catch (error) {
+        res.status(400).json({message: error.message})
+    }
 })
 
 //Get all Method
